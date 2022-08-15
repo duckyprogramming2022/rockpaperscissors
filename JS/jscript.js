@@ -7,3 +7,9 @@ function randomComputerPick() {         //we will use this to generate a number 
     console.log(rnd);
     return rnd;
 }
+
+function getComputerPick() {
+    pick = randomComputerPick();
+    console.log(pick);
+    return choice[pick];
+}
