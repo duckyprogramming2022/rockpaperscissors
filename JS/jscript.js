@@ -9,7 +9,7 @@ function randomComputerPick() {         //we will use this to generate a number 
 }
 
 function getComputerPick() {
-    pick = randomComputerPick();
-    console.log(pick);
-    return choice[pick];
+    pick = randomComputerPick();        //assign the return value of randomComputerPick to pick variable
+    console.log(pick);               
+    return choice[pick];                //return the actual pick value
 }
