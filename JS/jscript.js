@@ -1,4 +1,4 @@
-const choice = ['Rock', 'Scissor', 'Paper']
+const choice = ['ROCK', 'SCISSOR', 'PAPER']
 
 function randomComputerPick() {         //we will use this to generate a number we can use to pick an item from choice by index
     rnd = Math.random();                //generate random number between 0 and 1
