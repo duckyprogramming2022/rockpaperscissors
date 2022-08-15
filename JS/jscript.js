@@ -19,7 +19,9 @@ let playerpick = '';
 function getPlayerChoice() {
     cPC = checkPlayerChoice();
     while (cPC === false) {
-        playerpick = prompt("Please provide your choice (ROCK, SCISSOR or PAPER): ").toUpperCase(); // allow user to make his choice and capitalize his choice
+        // allow user to make his choice and capitalize his choice
+        playerpick = prompt("Please provide your choice (ROCK, SCISSOR or PAPER): ").toUpperCase(); 
+        // check if the input corrosponds with the available choices
         if (checkPlayerChoice()) {
             console.log("Thank you for providing an input");
             return playerpick;
