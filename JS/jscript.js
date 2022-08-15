@@ -13,3 +13,22 @@ function getComputerPick() {
     console.log(pick);               
     return choice[pick];                //return the actual pick value
 }
+
+let playerpick = '';
+
+function getPlayerChoice() {
+    cPC = checkPlayerChoice();
+    while (cPC === false) {
+        playerpick = prompt("Please provide your choice (ROCK, SCISSOR or PAPER): ").toUpperCase(); // allow user to make his choice and capitalize his choice
+        if (checkPlayerChoice()) {
+            console.log("Thank you for providing an input");
+            return playerpick;
+        } else {
+            console.log("You provided a wrong inputvalue. Please try again");
+        }
+    } 
+}
+
+function checkPlayerChoice() {
+    return choice.includes(playerpick);
+}
