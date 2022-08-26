@@ -2,20 +2,37 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     text-align: center;
+    margin: 0;
+}
+
+h1{
+    margin: 0;
+    padding-bottom: 25px;
+    padding-top: 75px;
+    background-color: violet;
+    color:aliceblue;
+}
+
+.container{
+    background-color: #fcf5c7;
+    padding-top: 2%;
+    padding-bottom: 100%;
 }
 
 .points,.result,.choice {
     display: flex;
-    justify-content:space-around;
-    margin-inline: 20%;
-    
+    justify-content:space-evenly;
+    margin-inline: 20%;    
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 100,
-    'GRAD' 0
+.result {
+    box-sizing: border-box;
+    margin-inline: 30%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 200px;
+    border: solid;
+    border-radius: 20px;
 }
 
 .paper,
@@ -26,6 +43,21 @@ body {
     font-variation-settings: 'WGHT' 100, 'OPSZ' 48;
 }
 
-.paper{
-    color: rgb(255, 87, 51);
+.star{
+    color: #ffc300;
+    padding-top: 10px;
+    font-variation-settings:
+    'FILL' 1;
 }
+
+
+.paper{
+    color: green;
+}
+.rock{
+    color: blue;
+}
+.scissor{
+    color: red;
+}
+
