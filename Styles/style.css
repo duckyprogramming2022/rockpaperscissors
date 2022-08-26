@@ -1,0 +1,11 @@
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 100,
+    'GRAD' 0
+}
+
+.paper .scissor .stone {
+    font-size: 24px;
+    font-variation-settings: 'WGHT' 100, 'OPSZ' 24;
+}
