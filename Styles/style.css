@@ -10,7 +10,7 @@
     'GRAD' 0
 }
 
-.paper .scissor .stone {
+.paper .scissor .stone .star{
     font-size: 24px;
     font-variation-settings: 'WGHT' 100, 'OPSZ' 24;
 }
