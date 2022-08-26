@@ -1,19 +1,14 @@
 body {
-    display: flex;
-    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     text-align: center;
 }
 
 .points,.result,.choice {
     display: flex;
-    width: 700px;
     justify-content:space-around;
+    margin-inline: 20%;
     
-}
-
-.container {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
 }
 
 .material-symbols-outlined {
@@ -29,4 +24,8 @@ body {
 .star{
     font-size: 48px;
     font-variation-settings: 'WGHT' 100, 'OPSZ' 48;
+}
+
+.paper{
+    color: rgb(255, 87, 51);
 }
