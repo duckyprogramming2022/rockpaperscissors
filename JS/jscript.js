@@ -82,7 +82,7 @@ function playRound(computerselection, playerselection) {
 }
 
 
-
+/*
 function play() {
     for (let i = 0; i < 5; i++) {
         let computerselection = getComputerPick();
@@ -91,4 +91,4 @@ function play() {
         console.log(playRound(),i)
     }
 }
-
+*/
