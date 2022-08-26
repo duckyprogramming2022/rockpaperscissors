@@ -1,6 +1,5 @@
 .container {
     font-family: 'Roboto', sans-serif;
-    font-size: 18px;
 }
 
 .material-symbols-outlined {
@@ -10,7 +9,10 @@
     'GRAD' 0
 }
 
-.paper .scissor .stone .star{
-    font-size: 24px;
-    font-variation-settings: 'WGHT' 100, 'OPSZ' 24;
+.paper,
+.scissor,
+.rock,
+.star{
+    font-size: 48px;
+    font-variation-settings: 'WGHT' 100, 'OPSZ' 48;
 }
