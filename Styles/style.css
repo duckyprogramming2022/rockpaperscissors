@@ -1,5 +1,14 @@
 body {
+    display: flex;
+    justify-content: center;
     text-align: center;
+}
+
+.points,.result,.choice {
+    display: flex;
+    width: 700px;
+    justify-content:space-around;
+    
 }
 
 .container {
