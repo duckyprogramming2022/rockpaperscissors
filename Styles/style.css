@@ -19,28 +19,43 @@ h1{
     padding-bottom: 100%;
 }
 
-.points,.result,.choice {
-    display: flex;
-    justify-content:space-evenly;
-    margin-inline: 20%;    
+.game{
+    display:flex;
+    justify-content: space-around;
+    margin-inline: auto;
+    align-items: center;
 }
 
-.result {
-    box-sizing: border-box;
-    margin-inline: 30%;
-    margin-top: 40px;
-    margin-bottom: 40px;
+.choice {
+    margin-top: 20px;
+    display: flex;
+    justify-content:space-evenly;
+    margin-inline: 40%;    
+}
+
+.tempresult {
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 400px;
     height: 200px;
-    border: solid;
+    border: 5px solid red;
+    box-shadow: 0 0 0 5px blue;
     border-radius: 20px;
+}
+
+.paper,
+.scissor,
+.rock{
+    opacity: 0.25;
 }
 
 .paper,
 .scissor,
 .rock,
 .star{
-    font-size: 48px;
-    font-variation-settings: 'WGHT' 100, 'OPSZ' 48;
+    font-size: 64px;
+    font-variation-settings: 'WGHT' 100, 'OPSZ' 64;
 }
 
 .star{
@@ -53,11 +68,17 @@ h1{
 
 .paper{
     color: green;
+    
 }
 .rock{
     color: blue;
 }
 .scissor{
     color: red;
+}
+.paper,
+.rock,
+.scissor {
+    opacity: 1;
 }
 

@@ -1,94 +1,133 @@
-const choice = ['ROCK', 'SCISSOR', 'PAPER']
+const tempresult = document.querySelectorAll('.tempresult>span');
 
-function randomComputerPick() {         //we will use this to generate a number we can use to pick an item from choice by index
-    rnd = Math.random();                //generate random number between 0 and 1
-    rnd *= choice.length                //account for range of array
-    rnd = Math.floor(rnd)               //floor this cause arrays start at 0 and we need integers
-    return rnd;
+const computer_plays = document.querySelectorAll('.game>.computer>.plays>span');
+const player_plays = document.querySelectorAll('.game>.player>.plays>span');
+const computer_stars = document.querySelectorAll('.game>.computer>.stars>span');
+const player_stars = document.querySelectorAll('.game>.player>.stars>span');
+
+const choice = document.querySelectorAll('.choice>span');
+const paper = document.querySelector('.choice>.paper');
+const rock = document.querySelector('.choice>.rock');
+const scissor = document.querySelector('.choice>.scissor');
+
+// get computer pick
+function getRndComputerPick() {   
+    let computerchoice = []; 
+    rnd = Math.random()*choice.length;    
+    rnd = Math.floor(rnd);
+    let pick = choice[rnd].classList[1];
+    let text = choice[rnd].textContent;
+    computerchoice = [pick, text];
+    return computerchoice;
 }
 
-function getComputerPick() {
-    pick = randomComputerPick();        //assign the return value of randomComputerPick to pick variable             
-    return choice[pick];                //return the actual pick value
-}
+choice.forEach((choice) => {
+    choice.addEventListener('click', () => {
+        let playerchoice = [];
+        let pick = choice.classList[1];
+        let text = choice.textContent;
+        playerchoice.push(pick, text);
+        computerchoice = getRndComputerPick();
+        eraseCurrentPlay();
+        playRound(computerchoice, playerchoice);
+        console.log(checkGameOver(score));
+    });
+});
 
-let playerpick = '';
-let computerpick = '';
+let score = [];
+let playerscore = 5;
+let computerscore = 5;
+let all_plays_player = [];
+let winner = '';
 
+function playRound(computerchoice, playerchoice) {
 
-function getPlayerChoice() {
-    let cPC = false;
-    while (cPC === false) {
-        // allow user to make his choice and capitalize his choice
-        playerpick = prompt("Please provide your choice (ROCK, SCISSOR or PAPER): ").toUpperCase(); 
-        // check if the input corrosponds with the available choices
-        cPC = choice.includes(playerpick);
-        console.log(playerpick, cPC)
-        if (cPC) {
-            console.log("Thank you for providing an input");
-            return playerpick;
-        } else {
-            console.log("You provided a wrong inputvalue. Please try again");
-        }
+    let computerchoice_name = computerchoice[0];
+    let computerchoice_icon_name = computerchoice[1];
+    let playerchoice_name = playerchoice[0];
+    let playerchoice_icon_name = playerchoice[1];
+
+    //check who won
+    winner = whoWins(computerchoice_name, playerchoice_name);
+    console.log(winner);
+
+    if (winner !== 'none') {
+        //display current play and store play values
+        createResultSpans(  computerchoice_name, computerchoice_icon_name, 
+                            playerchoice_name, playerchoice_icon_name);
+        //adjust score
+        adJustScore(winner);
+    }    
+};
+
+function adJustScore(winner){
+    if (winner === 'computer') {
+        playerscore -=1;
+    } else if (winner === 'player') {
+        computerscore -=1;
     }
-}
-
-//rock beats scissors
-//paper beats rock
-//scissors beats paper
-
-let playerscore = 0;
-let computerscore = 0;
-
-
-function playRound(computerselection, playerselection) {
-    if (computerselection === "ROCK") {
-        if (playerselection === "ROCK") {
-            playerscore = 0;
-            computerscore = 0;
-        } else if (playerselection === "PAPER") {
-            playerscore += 1;
-        } else {
-            computerscore += 1;
-        }
-    } else if (computerselection === "PAPER") {
-        if (playerselection === "PAPER") {
-            playerscore = 0;
-            computerscore = 0;
-        } else if (playerselection === "SCISSOR") {
-            playerscore += 1;
-        } else {
-            computerscore += 1;
-        }
-    } else if (computerselection === "SCISSOR") {
-        if (playerselection === "SCISSOR") {
-            playerscore = 0;
-            computerscore = 0;
-        } else if (playerselection === "ROCK") {
-            playerscore += 1;
-        } else {
-            computerscore += 1;
-        }
+    if (playerscore < 5) {
+        player_stars[playerscore].style.opacity = 0.25;
     }
-    console.log(computerselection, playerselection);
-    console.log(computerscore, playerscore);
-    if (playerscore > computerscore) {
-        return "Player won"
-    } else if (playerscore < computerscore) {
-        return "Computer won"
+    if (computerscore <5) {
+        computer_stars[computerscore].style.opacity = 0.25;
+    }
+    score = [computerscore, playerscore]
+    return score;
+};
+
+function whoWins(computerchoice_name, playerchoice_name){
+    if (computerchoice_name === playerchoice_name){
+        return 'none';
+    } else if ( computerchoice_name === 'rock'   &&  playerchoice_name === 'scissor'  ||
+                computerchoice_name === 'paper'  &&  playerchoice_name === 'rock'     ||
+                computerchoice_name === 'scissor'&&  playerchoice_name === 'paper') {
+                return 'computer';
     } else {
-        return "Tie"
+        return 'player';
     }
-}
+};
+
+function createResultSpans( computerchoice_name, computerchoice_icon_name, 
+                            playerchoice_name, playerchoice_icon_name) {
+
+    tempresult[0].classList.add("material-symbols-outlined");
+    tempresult[0].classList.add(computerchoice_name);
+    tempresult[0].textContent = computerchoice_icon_name;
+
+    tempresult[1].classList.add("material-symbols-outlined");
+    tempresult[1].classList.add(playerchoice_name);
+    tempresult[1].textContent = playerchoice_icon_name;
 
 
-/*
-function play() {
-    for (let i = 0; i < 5; i++) {
-        let computerselection = getComputerPick();
-        let playerselection = getPlayerChoice();
-        playRound(computerselection, playerselection);
-        console.log(playRound(),i)
-    }
+    for (let i =0; i<= computer_plays.length-1;i++) {
+        if (computer_plays.item(i).textContent === '') {
+            computer_plays.item(i).textContent = computerchoice_icon_name;
+            computer_plays.item(i).classList.add(computerchoice_name);
+            break;
+        }
+    };
+    for (let i =0; i<= player_plays.length-1;i++) {
+        if (player_plays.item(i).textContent === '') {
+            player_plays.item(i).textContent = playerchoice_icon_name;
+            player_plays.item(i).classList.add(playerchoice_name);
+            break;
+        }
+    };
+                                
+};
+
+function eraseCurrentPlay() {
+    tempresult[0].classList = '';
+    tempresult[0].textContent = '';
+    tempresult[1].textContent = '';
+    tempresult[1].textContent = '';
+};
+
+function checkGameOver() {
+    if (playerscore === 0) {
+        return 'GameOver, Computer won.'
+    } else if (computerscore === 0) {
+        return 'GameOver, Player won'
+    };
 }
-*/
